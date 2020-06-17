@@ -8,7 +8,8 @@
 
 下载`dist`文件夹下的`mapgrid.js`文件，包含到项目中即可
 
-## [doc](https://github.com/geocompass/mapgrid/out/index.html)
+## 文档
+[参考文档](https://geocompass.github.io/mapgrid/out/index.html)
 ## 打包
 
 ```sh
