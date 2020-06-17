@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v1.10.1/mapbox-gl.css' rel='stylesheet' />
+
+    <script src='https://api.mapbox.com/mapbox-gl-js/v1.10.1/mapbox-gl.js'></script>
+</head>
+
+<body>
+    <canvas id="canvas" width="800" height="800" style="position: absolute;z-index: 100;"></canvas>
+    <div id="map" style="width: 800px; height: 800px; z-index: 10;">
+
+    </div>
+
+
+    <script src="./mapgrid.js"></script>
+    <!-- <script src="./test.js"></script>-->
+    <!-- <script >  </script> -->
+    <script >
+        // mapboxgl.accessToken = '<your access token here>';
+        
+        // window.mapGrid = mapGrid;
+        // mapGrid.addGridLine();
+
+        // import {mapgrid} from 'mapgrid'
+var map = new mapboxgl.Map({
+    container: 'map',
+    style: 'http://vt.geo-compass.com/geocmap/api/v1/map/10001000187/publish', // stylesheet location
+    // center: [120.7, 31.2], // starting position [lng, lat]
+    // zoom: 9 // starting zoom
+});
+map.getCanvas().style.cursor = "default";
+map.on('load', () => {
+    // console.log(map.getBounds())
+    map.addSource('points', {
+        'type': 'geojson',
+        'data': {
+            'type': 'FeatureCollection',
+            'features': [
+                {
+                    // feature for Mapbox DC
+                    'type': 'Feature',
+                    'geometry': {
+                        'type': 'Point',
+                        'coordinates': [
+                            120.932766,
+                            31.174592
+                        ]
+                    },
+                    'properties': {
+                        'title': 'Mapbox DC',
+                        'icon': 'monument'
+                    }
+                },
+                {
+                    // feature for Mapbox DC
+                    'type': 'Feature',
+                    'geometry': {
+                        'type': 'Point',
+                        'coordinates': [
+                            120.3997,
+                            31.47811
+                        ]
+                    },
+                    'properties': {
+                        'title': 'Mapbox DC',
+                        'icon': 'monument'
+                    }
+                },
+            ]
+        }
+    });
+    map.addLayer({
+        'id': 'points',
+        'type': 'circle',
+        'source': 'points',
+        'layout': {
+        }
+    });
+
+
+    let bounds = map.getBounds()
+    window.mapGrid = new MapGrid(document.getElementById('canvas').getContext('2d'), [bounds._sw.lng, bounds._sw.lat, bounds._ne.lng, bounds._ne.lat], 800, 800);
+})
+    </script>
+</body>
+
+</html>
