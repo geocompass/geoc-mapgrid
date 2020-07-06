@@ -1,10 +1,11 @@
 'use strict';
 const gridLine = require('./grid-line');
 const gridText = require('./grid-text');
+const BaseUtil = require('./base-util');
 /**
  * 地图格网
  */
-class MapGrid {
+class MapGrid extends BaseUtil {
   /**
      * 生成地图格网
      * @param {context2d} ctx canvas的context2d
@@ -28,6 +29,7 @@ class MapGrid {
   } = {
 
   }) {
+    super();
     this.box = box;
     this.canvasWidth = canvasWidth;
     this.canvasHeight = canvasHeight;
@@ -97,14 +99,14 @@ class MapGrid {
     this.gridTextLayer = null;
   }
   _initCtx() {
-    this.canvas = document.createElement('canvas');
+    this.canvas = this.document.createElement('canvas');
     this.canvas.width = this.canvasWidth;
     this.canvas.height = this.canvasHeight;
     this.ctx = this.canvas.getContext('2d');
   }
   _initLayer() {
     // 网格线图层
-    const gridLineCanvas = document.createElement('canvas');
+    const gridLineCanvas = this.document.createElement('canvas');
     gridLineCanvas.width = this.canvasWidth;
     gridLineCanvas.height = this.canvasHeight;
     this.gridLineLayer = {
@@ -114,7 +116,7 @@ class MapGrid {
       ctx: gridLineCanvas.getContext('2d'),
     };
     // 网格文字图层
-    const gridTextCanvas = document.createElement('canvas');
+    const gridTextCanvas = this.document.createElement('canvas');
     gridTextCanvas.width = this.canvasWidth;
     gridTextCanvas.height = this.canvasHeight;
     this.gridTextLayer = {

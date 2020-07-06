@@ -2,6 +2,7 @@
 const degreeUtil = require('./util/degree');
 const textUtil = require('./util/text');
 const transformUtil = require('./util/transform');
+const BASEDPI = 96;
 module.exports = {
   _addGridTextToCanvas() {
     this.ctx.drawImage(this.gridTextLayer.canvas, 0, 0, this.gridTextLayer.width, this.gridTextLayer.height, 0, 0, this.canvasWidth, this.canvasHeight);
@@ -34,9 +35,9 @@ module.exports = {
     for (let i = 1; i < x_num; ++i) {
       const xy = transformUtil.mercator2LonLat([ mercatorBox[0] + i * stepX, mercatorBox[1] ]);
       const text = degreeUtil.formatDegree(xy[0]) + 'E';
-      const t = textUtil._createText(layerCtx, stepWidth * i, 0, text, { side: 'top' });
+      const t = textUtil._createText(layerCtx, stepWidth * i, 0, text, { side: 'top', fontSize: Math.ceil(12 * this.dpi / BASEDPI) });
       this.gridLinePadding.top = t > this.gridLinePadding.top ? t : this.gridLinePadding.top;
-      const b = textUtil._createText(layerCtx, stepWidth * i, this.canvasHeight, text, { side: 'bottom' });
+      const b = textUtil._createText(layerCtx, stepWidth * i, this.canvasHeight, text, { side: 'bottom', fontSize: Math.ceil(12 * this.dpi / BASEDPI) });
       this.gridLinePadding.bottom = b > this.gridLinePadding.bottom ? b : this.gridLinePadding.bottom;
       // layerCtx.beginPath();
       // layerCtx.moveTo(stepWidth * i, 0 + t);
@@ -47,9 +48,9 @@ module.exports = {
     for (let i = 1; i < y_num; ++i) {
       const xy = transformUtil.mercator2LonLat([ mercatorBox[0], mercatorBox[3] - i * stepY ]);
       const text = degreeUtil.formatDegree(xy[1]) + 'N';
-      const l = textUtil._createText(layerCtx, 0, stepHeight * i, text, { side: 'left' });
+      const l = textUtil._createText(layerCtx, 0, stepHeight * i, text, { side: 'left', fontSize: Math.ceil(12 * this.dpi / BASEDPI) });
       this.gridLinePadding.left = l > this.gridLinePadding.left ? l : this.gridLinePadding.left;
-      const r = textUtil._createText(layerCtx, this.canvasWidth, stepHeight * i, text, { side: 'right' });
+      const r = textUtil._createText(layerCtx, this.canvasWidth, stepHeight * i, text, { side: 'right', fontSize: Math.ceil(12 * this.dpi / BASEDPI) });
       this.gridLinePadding.right = r > this.gridLinePadding.right ? r : this.gridLinePadding.right;
       // layerCtx.beginPath();
       // layerCtx.moveTo(0 + l, stepHeight * i);
