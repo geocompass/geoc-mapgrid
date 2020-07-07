@@ -2,7 +2,7 @@
   "name": "map-grid",
   "version": "1.0.0",
   "description": "generate map grid",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack --config webpack/webpack.config.js",
@@ -17,6 +17,7 @@
     "map_grid"
   ],
   "author": "LH",
+  "homepage": "https://github.com/geocompass/map-grid",
   "license": "MIT",
   "devDependencies": {
     "eslint": "^7.1.0",
