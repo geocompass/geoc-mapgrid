@@ -1,5 +1,5 @@
 {
-  "name": "map-grid",
+  "name": "geoc-mapgrid",
   "version": "1.0.0",
   "description": "generate map grid",
   "main": "dist/index.js",
@@ -17,7 +17,7 @@
     "map_grid"
   ],
   "author": "LH",
-  "homepage": "https://github.com/geocompass/map-grid",
+  "homepage": "https://github.com/geocompass/geoc-mapgrid",
   "license": "MIT",
   "devDependencies": {
     "eslint": "^7.1.0",
