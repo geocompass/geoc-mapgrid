@@ -1,6 +1,6 @@
 {
   "name": "geoc-mapgrid",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "generate map grid",
   "main": "dist/mapgrid.js",
   "scripts": {
@@ -19,6 +19,12 @@
   "author": "LH",
   "homepage": "https://github.com/geocompass/geoc-mapgrid",
   "license": "MIT",
+  "browser": {
+    "canvas": false,
+    "jsdom": false,
+    "jsdom/lib/jsdom/living/generated/utils": false,
+    "jsdom/lib/jsdom/utils": false
+  },
   "devDependencies": {
     "eslint": "^7.1.0",
     "eslint-config-egg": "^8.0.1",
